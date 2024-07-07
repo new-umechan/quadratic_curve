@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2次曲線メーカー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>グラフアート 二次曲線メーカー</h1>
+    <div class="input-section">
+        <label for="point1">始点 (x, y):</label>
+        <input type="text" id="point1" placeholder="例: 1,2">
+        <label for="point2">点2 (x, y):</label>
+        <input type="text" id="point2" placeholder="例: 2,3">
+        <label for="point3">点3 (x, y):</label>
+        <input type="text" id="point3" placeholder="例: 3,4">
+        <label for="point4">点4 (x, y):</label>
+        <input type="text" id="point4" placeholder="例: 4,5">
+        <label for="point5">終点 (x, y):</label>
+        <input type="text" id="point5" placeholder="例: 5,6">
+    </div>
+    <div class="button-section">
+        <button id="calculateBtn">計算</button>
+    </div>
+    <div class="result-section">
+        <h2>計算結果:</h2>
+        <div id="result">
+            <p id="equation"></p>
+            <p id="conicType"></p>
+            <p id="lineEquation"></p>
+            <div id="parallelResult">
+                <p id="parallelLineEquation"></p>
+            </div>
+            <button id="copyBtn">コピー</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
