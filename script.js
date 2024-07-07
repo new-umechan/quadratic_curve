@@ -1,7 +1,3 @@
-let equationText = '';
-let lineEquationText = '';
-let parallelLineEquationText = '';
-
 document.getElementById('calculateBtn').addEventListener('click', function() {
     const points = [];
     for (let i = 1; i <= 5; i++) {
@@ -90,18 +86,13 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     document.getElementById('equation').textContent = equationText;
     document.getElementById('conicType').textContent = conicType;
 
-    const [x1, y1] = points[0].map(Number);
-    const [x2, y2] = points[4].map(Number);
-    const slope = (y2 - y1) / (x2 - x1);
-    const intercept = y1 - slope * x1;
-
-    const [x3, y3] = points[2].map(Number);
-    const yOnLine = slope * x3 + intercept;
-    const condition = y3 >= yOnLine ? '>=' : '<=';
-
-    lineEquationText = `y ${condition} ${slope.toFixed(3)}x + ${intercept.toFixed(3)}`;
-
     if (conicType === '双曲線です') {
+        const [x1, y1] = points[0].map(Number);
+        const [x2, y2] = points[4].map(Number);
+        const slope = (y2 - y1) / (x2 - x1);
+        const intercept = y1 - slope * x1;
+
+        const [x3, y3] = points[2].map(Number);
         const interceptParallel = y3 - slope * x3;
         const yOnLineParallel = slope * x3 + interceptParallel;
         const conditionParallel = y3 >= yOnLineParallel ? '>=' : '<=';
@@ -112,11 +103,22 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
             parallelLineEquationText = `${slope.toFixed(3)}x + ${intercept.toFixed(3)} <= y <= ${slope.toFixed(3)}x + ${interceptParallel.toFixed(3)}`;
         }
         document.getElementById('parallelLineEquation').textContent = parallelLineEquationText;
+        document.getElementById('lineEquation').textContent = '';
     } else {
+        const [x1, y1] = points[0].map(Number);
+        const [x2, y2] = points[4].map(Number);
+        const slope = (y2 - y1) / (x2 - x1);
+        const intercept = y1 - slope * x1;
+
+        const [x3, y3] = points[2].map(Number);
+        const yOnLine = slope * x3 + intercept;
+        const condition = y3 >= yOnLine ? '>=' : '<=';
+
+        lineEquationText = `y ${condition} ${slope.toFixed(3)}x + ${intercept.toFixed(3)}`;
+        document.getElementById('lineEquation').textContent = lineEquationText;
         document.getElementById('parallelLineEquation').textContent = '';
     }
 
-    document.getElementById('lineEquation').textContent = lineEquationText;
     document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 });
 
